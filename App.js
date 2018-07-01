@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import {Platform, StyleSheet, Text, View, FlatList } from 'react-native';
+import {Platform, StyleSheet, Text, View, FlatList, Image } from 'react-native';
 
 
 export default class App extends Component {
@@ -20,13 +20,13 @@ constructor(props) {
     });
 }
 
-
   render() {
     return (
       <View style={styles.container}>
         <FlatList
           data={this.state.filmes}
           renderItem={({item})=> <Filme data={item} /> }
+          keyExtractor={(item, index)=>item.nome}
           />
       </View>
     );
@@ -37,7 +37,13 @@ class Filme extends Component {
 
   render() {
     return(
-      <Text>...</Text>
+      <View style={styles.filmeArea}>
+        <Image source={{uri:this.props.data.poster.replace('http:','https:')}} style={styles.filmeImage}/>
+        <View style={styles.filmeInfo}>
+          <Text style={styles.filmeNome}>{this.prop.data.nome}</Text>
+          <Text style={styles.filmeData}>{this.prop.data.data}</Text>
+        </View>
+      </View>
       );
   }
 }
@@ -45,8 +51,24 @@ class Filme extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 20,
   },
+  filmeArea: {
+    flex:1,
+    flexDirection: 'row',
+  },
+  filmeImage: {
+    width:80,
+    height:110,
+  },
+  filmeInfo: {
+    flex:1,
+    flexDirection: 'column', 
+  },
+  filmeNome: {
+    
+  },
+  filmeData: {
+    
+  }
 });
