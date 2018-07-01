@@ -40,8 +40,9 @@ class Filme extends Component {
       <View style={styles.filmeArea}>
         <Image source={{uri:this.props.data.poster.replace('http:','https:')}} style={styles.filmeImage}/>
         <View style={styles.filmeInfo}>
-          <Text style={styles.filmeNome}>{this.prop.data.nome}</Text>
-          <Text style={styles.filmeData}>{this.prop.data.data}</Text>
+          <Text style={styles.filmeNome}>{this.props.data.nome}</Text>
+          <Text style={styles.filmeData}>{this.props.data.data}</Text>
+          <Text style={styles.filmeData}>{this.props.data.sinopse}</Text>
         </View>
       </View>
       );
@@ -63,12 +64,15 @@ const styles = StyleSheet.create({
   },
   filmeInfo: {
     flex:1,
-    flexDirection: 'column', 
+    flexDirection: 'column',
+    marginLeft: 10,
+    justifyContent: 'center',  
   },
   filmeNome: {
-    
+    fontSize: 18,
+    fontWeight: 'bold', 
   },
   filmeData: {
-    
+
   }
 });
